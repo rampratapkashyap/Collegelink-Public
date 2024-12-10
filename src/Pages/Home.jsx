@@ -6,17 +6,13 @@ import "react-responsive-carousel/lib/styles/carousel.min.css";
 import Footer from '../Components/Footer';
 import TopColleges from '../Components/TopColleges';
 import UPTopColleges from '../Components/UPTopColleges';
+import GetInTouch from '../Components/GetInTouch';
 
 function Home() {
   const [value, setValue] = useState("");
-  const theme = useTheme();
-
   const handleTextarea = () => {
     setValue("");
   };
-
-  // Check if the current theme is dark or light
-  const isDarkMode = theme.palette.mode === 'dark';
 
   return (
     <section maxWidth="full">
@@ -24,60 +20,6 @@ function Home() {
       <Grid container spacing={4} direction="column" alignItems="center">
         {/* Image Carousel */}
         <Grid item xs={12} sx={{ width: '100%', position: 'relative' }}>
-          {/* Transparent Header */}
-          <Box
-            sx={{
-              position: 'absolute',
-              top: 32,
-              width: '100%',
-              height: 'auto',
-              bgcolor: 'rgba(0, 0, 0, 0.5)',
-              color: 'white',
-              p: 2,
-              zIndex: 2, // Ensure it stays above the carousel
-              display: 'flex',
-              flexDirection: 'row',
-              gap: '20px', // Increased gap between items
-              justifyContent: 'center',
-              alignItems: 'center',
-              fontSize: { xs: '0.75rem', sm: '0.85rem', md: '0.9rem' }, // Responsive font size
-              flexWrap: 'wrap', // Ensure text wraps on smaller screens
-            }}
-          >
-            {['All Programmes', 'B.Tech', 'M.Tech', 'MBA', 'MCA', 'BCA', 'B.Com', 'M.Com', 'BA', 'MA', 'M.Sc'].map((text, index) => (
-              <Typography
-                key={index}
-                sx={{
-                  fontSize: 'inherit',
-                  position: 'relative', // Required for the pseudo-element
-                  cursor: 'pointer',
-                  '&:hover::after': {
-                    content: '""',
-                    position: 'absolute',
-                    left: 0,
-                    bottom: '-6px', // Controls the gap between text and underline
-                    width: '100%',
-                    height: '3px', // Thickness of the underline
-                    backgroundColor: 'darkgray', // Color of the underline
-                    transition: 'width 0.3s ease-in-out', // Smooth effect
-                  },
-                  '&::after': {
-                    content: '""',
-                    position: 'absolute',
-                    left: 0,
-                    bottom: '-6px',
-                    width: '0%',
-                    height: '3px',
-                    backgroundColor: 'darkgray',
-                    transition: 'width 0.3s ease-in-out',
-                  },
-                }}
-              >
-                {text}
-              </Typography>
-            ))}
-          </Box>
-
           {/* Carousel */}
           <Box
             sx={{
@@ -144,6 +86,15 @@ function Home() {
                         variant="contained"
                         size="large"
                         onClick={handleTextarea}
+                        sx={{
+                          backgroundColor: 'transparent',
+                          border: '1px solid #000',
+                          color: 'black',
+                          '&:hover': {
+                            backgroundColor: 'transparent',
+                            borderColor: '#000',
+                          },
+                        }}
                       >
                         Search
                       </Button>
@@ -161,6 +112,9 @@ function Home() {
 
       {/* UP Top Colleges */}
       <UPTopColleges />
+
+      {/* Get In Touch*/}
+      <GetInTouch />
 
       {/* Footer */}
       <Footer />
