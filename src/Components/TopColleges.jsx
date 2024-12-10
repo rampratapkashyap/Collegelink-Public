@@ -89,19 +89,9 @@ const TopColleges = () => {
     ]);
 
     const [activeFilter, setActiveFilter] = useState('');
-    const filters = [
-        'BBA',
-        'MBA',
-        'B.Tech',
-        'PGDM',
-        'Science',
-        'Arts',
-        'Commerce',
-        'Engineering',
-        'Medical',
-        'Law',
-        'Pharmacy',
-        'Agriculture',
+    const filters = ['B.Tech',
+        'Biotech', 'BBA', 'MBA', 'PGDM', 'MCA', 'BDS', 'MBBS', 'BPT', 'B.Sc', 'Animation', 'CyberLaw',
+        'M.Sc', 'Agriculture', 'Pharmacy', 'Law', 'Medical', 'Engineering', 'Commerce', 'Arts', 'Science', 'BCA', 'M.Tech', 'Nursing', 'LLB',
     ];
     const [showArrows, setShowArrows] = useState(false);
 
@@ -161,7 +151,7 @@ const TopColleges = () => {
                             }
                             style={{
                                 maxWidth: '150px',  // Fix button text overflow
-                                textOverflow: 'ellipsis', 
+                                textOverflow: 'ellipsis',
                                 overflow: 'hidden',
                                 whiteSpace: 'nowrap',
                             }}
