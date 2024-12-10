@@ -100,11 +100,8 @@ const TopColleges = () => {
         'Engineering',
         'Medical',
         'Law',
-        'Architecture',
         'Pharmacy',
         'Agriculture',
-        'Hospitality',
-        'Education',
     ];
     const [showArrows, setShowArrows] = useState(false);
 
@@ -196,7 +193,7 @@ const TopColleges = () => {
                     <TableBody>
                         {filteredColleges.map((college) => (
                             <TableRow key={college.id}>
-                                <TableCell>{college.rank}</TableCell>
+                                <TableCell>#{college.rank}</TableCell>
                                 <TableCell>
                                     <Box display="flex" alignItems="center">
                                         <Avatar
