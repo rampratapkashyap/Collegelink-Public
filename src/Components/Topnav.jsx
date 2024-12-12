@@ -30,12 +30,10 @@ const Topnav = () => {
               <MenuIcon />
             </IconButton>
           </Box>
-
           {/* Application Name */}
           <Typography variant="h6" sx={{ flexGrow: 1 }}>
-            My Application
+            CollegeNevigator
           </Typography>
-
           {/* Navigation items for larger screens */}
           <Box display={{ xs: 'none', md: 'flex' }} gap={3}>
             <Button

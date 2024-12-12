@@ -101,6 +101,8 @@ const GetInTouch = () => {
                             variant="contained"
                             endIcon={<SendIcon />}
                             fullWidth
+                            size="small"
+                            sx={{ height: "55px" }} 
                         >
                             Send
                         </Button>
