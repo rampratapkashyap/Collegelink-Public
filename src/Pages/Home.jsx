@@ -45,13 +45,13 @@ function Home() {
               emulateTouch
             >
               <div>
-                <img src="https://cdn.pixabay.com/photo/2017/12/20/03/46/city-3029160_1280.jpg" alt="Image 1" />
+                <img src="https://images.pexels.com/photos/207692/pexels-photo-207692.jpeg" alt="Image 1" />
               </div>
               <div>
-                <img src="https://cdn.pixabay.com/photo/2019/03/03/21/59/landscape-4032951_1280.jpg" alt="Image 2" />
+                <img src="https://images.pexels.com/photos/3762800/pexels-photo-3762800.jpeg" alt="Image 2" />
               </div>
               <div>
-                <img src="https://cdn.pixabay.com/photo/2018/02/14/18/42/sky-3153572_1280.jpg" alt="Image 3" />
+                <img src="https://images.pexels.com/photos/7713548/pexels-photo-7713548.jpeg" alt="Image 3" />
               </div>
             </Carousel>
 

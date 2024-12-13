@@ -19,7 +19,7 @@ const Topnav = () => {
 
   return (
     <>
-      <AppBar position="static">
+      <AppBar position="fixed">
         <Toolbar>
           {/* Menu icon for mobile screens */}
           <Box display={{ xs: 'flex', md: 'none' }} marginRight={1}>
