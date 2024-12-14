@@ -15,6 +15,7 @@ import PersonIcon from '@mui/icons-material/Person';
 import EmailIcon from '@mui/icons-material/Email';
 import PhoneIcon from '@mui/icons-material/Phone';
 import LocationCityIcon from '@mui/icons-material/LocationCity';
+import { School as MortarboardIcon } from '@mui/icons-material';
 
 const QuickForm = () => {
   const [formData, setFormData] = useState({
@@ -148,6 +149,11 @@ const QuickForm = () => {
             onChange={handleChange}
             required
             label="Course Interested In"
+            startAdornment={
+              <InputAdornment position="start">
+                <MortarboardIcon />
+              </InputAdornment>
+            }
           >
             <MenuItem value="BE/B.Tech - Bachelors (Technology)">
               BE/B.Tech - Bachelors (Technology)
