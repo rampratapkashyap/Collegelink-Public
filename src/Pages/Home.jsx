@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Box, Grid, TextField, InputAdornment, Button, IconButton } from '@mui/material'; // Add IconButton here
+import { Box, Grid, TextField, InputAdornment, Button, IconButton, useTheme } from '@mui/material'; // Add useTheme for theme detection
 import SearchIcon from '@mui/icons-material/Search';
 import CloseIcon from '@mui/icons-material/Close';
 import { Carousel } from 'react-responsive-carousel';
@@ -10,11 +10,12 @@ import UPTopColleges from '../Components/UPTopColleges';
 import GetInTouch from '../Components/GetInTouch';
 import QuickForm from '../Components/QucikForm';
 
-
 function Home() {
   const [value, setValue] = useState("");
   const [showPopup, setShowPopup] = useState(false);
   let inactivityTimer;
+
+  const theme = useTheme(); // Detect current theme (light or dark)
 
   // Function to handle user activity
   const resetTimer = () => {
@@ -166,12 +167,12 @@ function Home() {
         >
           <Box
             sx={{
-              backgroundColor: 'white',
+              backgroundColor: theme.palette.background.paper, // Dynamically adjust based on theme
               padding: 4,
               borderRadius: 2,
               boxShadow: 3,
-              width: '90%', // You can increase this width value if needed
-              maxWidth: '700px', // Increase this maxWidth for larger form size
+              width: '100%', // You can increase this width value if needed
+              maxWidth: '900px', // Increase this maxWidth for larger form size
               position: 'relative',
             }}
           >
@@ -191,8 +192,6 @@ function Home() {
           </Box>
         </Box>
       )}
-
-
     </section>
   );
 }

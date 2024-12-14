@@ -9,6 +9,7 @@ import {
   InputLabel,
   FormControl,
   InputAdornment,
+  useTheme,
 } from '@mui/material';
 import PersonIcon from '@mui/icons-material/Person';
 import EmailIcon from '@mui/icons-material/Email';
@@ -23,6 +24,8 @@ const QuickForm = () => {
     city: '',
     course: 'BE/B.Tech - Bachelors (Technology)',
   });
+
+  const theme = useTheme(); // Access the current theme (light or dark)
 
   const handleChange = (e) => {
     setFormData({
@@ -39,22 +42,19 @@ const QuickForm = () => {
   return (
     <Box
       sx={{
-        maxWidth: 600,
+        maxWidth: 800,
         width: '100%',
         margin: 'auto',
         padding: 4,
         boxShadow: 2,
         borderRadius: 2,
-        backgroundColor: '#fff',
+        backgroundColor: theme.palette.background.paper, // Adjust background based on theme
+        color: theme.palette.text.primary, // Adjust text color based on theme
       }}
     >
       <Typography variant="h5" gutterBottom color="primary">
         Register Now To Apply
       </Typography>
-      <Typography variant="body2" gutterBottom>
-        Get details and latest updates
-      </Typography>
-
       <form onSubmit={handleSubmit}>
         <Box sx={{ display: 'flex', gap: 2, marginBottom: 2 }}>
           <TextField
@@ -72,6 +72,9 @@ const QuickForm = () => {
                 </InputAdornment>
               ),
             }}
+            sx={{
+              backgroundColor: theme.palette.background.default, // Adjust input field background
+            }}
           />
           <TextField
             label="Email Address"
@@ -88,6 +91,9 @@ const QuickForm = () => {
                   <EmailIcon />
                 </InputAdornment>
               ),
+            }}
+            sx={{
+              backgroundColor: theme.palette.background.default, // Adjust input field background
             }}
           />
         </Box>
@@ -109,6 +115,9 @@ const QuickForm = () => {
                 </InputAdornment>
               ),
             }}
+            sx={{
+              backgroundColor: theme.palette.background.default, // Adjust input field background
+            }}
           />
           <TextField
             label="City You Live In"
@@ -124,6 +133,9 @@ const QuickForm = () => {
                   <LocationCityIcon />
                 </InputAdornment>
               ),
+            }}
+            sx={{
+              backgroundColor: theme.palette.background.default, // Adjust input field background
             }}
           />
         </Box>
@@ -156,7 +168,7 @@ const QuickForm = () => {
           </Typography>
         </Typography>
 
-        <Button type="submit" variant="contained" color="warning" fullWidth>
+        <Button type="submit" variant="contained" color="primary" fullWidth>
           SUBMIT
         </Button>
       </form>
