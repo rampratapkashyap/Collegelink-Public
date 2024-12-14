@@ -16,12 +16,13 @@ import EmailIcon from '@mui/icons-material/Email';
 import PhoneIcon from '@mui/icons-material/Phone';
 import LocationCityIcon from '@mui/icons-material/LocationCity';
 import { School as MortarboardIcon } from '@mui/icons-material';
+import axios from 'axios';
 
 const QuickForm = () => {
   const [formData, setFormData] = useState({
     fullName: '',
     email: '',
-    mobileNumber: '',
+    mobile: '',
     city: '',
     course: 'BE/B.Tech - Bachelors (Technology)',
   });
@@ -35,10 +36,36 @@ const QuickForm = () => {
     });
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log(formData);
+  const handleSubmit = async (e) => {
+    e.preventDefault(); // Prevent the default form submission behavior
+    console.log("Form Data:", formData); 
+  
+    try {
+      // Send a POST request using Axios
+      const response = await axios.post(`http://localhost:8080/register`, formData);
+      console.log("Response from server:", response);
+  
+      if (response) {
+        console.log("You are registered successfully");
+        alert("Registration successful!");
+        // Optionally, clear the form data
+        setFormData({
+          fullName: "",
+          email: "",
+          mobile: "",
+          course: "",
+          city: "",
+        });
+      } else {
+        console.log("Unexpected response:", response);
+      }
+    } catch (error) {
+      // Log and display errors
+      console.error("Error occurred:", error);
+      alert("An error occurred. Please try again.");
+    }
   };
+  
 
   return (
     <Box
@@ -101,12 +128,12 @@ const QuickForm = () => {
         <Box sx={{ display: 'flex', gap: 2, marginBottom: 2 }}>
           <TextField
             label="Mobile Number"
-            name="mobileNumber"
+            name="mobile"
             variant="outlined"
             fullWidth
             required
             type="tel"
-            value={formData.mobileNumber}
+            value={formData.mobile}
             onChange={handleChange}
             InputProps={{
               startAdornment: (
