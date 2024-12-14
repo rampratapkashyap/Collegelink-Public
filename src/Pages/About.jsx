@@ -3,7 +3,7 @@ import { Container, Typography, Grid, Paper } from "@mui/material";
 
 function About() {
   return (
-    <Container maxWidth="lg" style={{ marginTop: "40px" }}>
+    <Container style={{ padding: '20px' }}>
       <Paper elevation={3} style={{ padding: "20px" }}>
         <Typography variant="h3" component="h1" gutterBottom>
           About Us

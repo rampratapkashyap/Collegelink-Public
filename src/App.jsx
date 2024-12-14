@@ -11,12 +11,14 @@ const App = () => {
   return (
     <CustomThemeProvider> {/* Wrap the app with CustomThemeProvider */}
       <Topnav />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/courses" element={<Courses />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/contact" element={<Contact />} />
-      </Routes>
+      <div style={{ marginTop: '55px' }}>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/courses" element={<Courses />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/contact" element={<Contact />} />
+        </Routes>
+      </div>
     </CustomThemeProvider>
   );
 };

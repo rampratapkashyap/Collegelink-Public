@@ -11,7 +11,7 @@ import {
 
 function Contact() {
   return (
-    <Container maxWidth="sm" style={{ marginTop: "40px" }}>
+    <Container maxWidth="sm" style={{ padding: '20px' }}>
       <Paper elevation={3} style={{ padding: "30px" }}>
         <Typography variant="h4" component="h1" gutterBottom>
           Contact Us

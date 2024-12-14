@@ -47,7 +47,6 @@ const QuickForm = () => {
         width: '100%',
         margin: 'auto',
         padding: 4,
-        boxShadow: 2,
         borderRadius: 2,
         backgroundColor: theme.palette.background.paper, // Adjust background based on theme
         color: theme.palette.text.primary, // Adjust text color based on theme
