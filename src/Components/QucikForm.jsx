@@ -19,6 +19,8 @@ import PhoneIcon from '@mui/icons-material/Phone';
 import LocationCityIcon from '@mui/icons-material/LocationCity';
 import { School as MortarboardIcon } from '@mui/icons-material';
 import axios from 'axios';
+import { useDispatch } from 'react-redux';
+import { registerAPI } from '../Redux/Features/RegisterSlice';
 
 const QuickForm = () => {
   const [formData, setFormData] = useState({
@@ -28,6 +30,7 @@ const QuickForm = () => {
     city: '',
     interestedCourse: '',
   });
+  const dispatch = useDispatch()
 
   const [snackbar, setSnackbar] = useState({ open: false, message: '', severity: '' });
   const handleCloseSnackbar = () => {
@@ -48,43 +51,8 @@ const QuickForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault(); // Prevent the default form submission behavior
     console.log('Form Data:', formData);
-
-    try {
-      // Send a POST request using Axios
-      const response = await axios.post(`http://localhost:8080/register`, formData);
-      console.log('Response from server:', response);
-
-      if (response) {
-        setSnackbar({
-          open: true,
-          message: 'Registration successful!',
-          severity: 'success',
-        });
-        // Optionally, clear the form data
-        setFormData({
-          fullName: '',
-          email: '',
-          mobile: '',
-          interestedCourse: '',
-          city: '',
-        });
-      } else {
-        console.log('Unexpected response:', response);
-        setSnackbar({
-          open: true,
-          message: 'Unexpected response from the server.',
-          severity: 'warning',
-        });
-      }
-    } catch (error) {
-      // Log and display errors
-      console.error('Error occurred:', error);
-      setSnackbar({
-        open: true,
-        message: 'An error occurred. Please try again.',
-        severity: 'error',
-      });
-    }
+    dispatch(registerAPI(formData)); // Pass formData directly
+    console.log("call")
   };
 
   return (
@@ -237,7 +205,7 @@ const QuickForm = () => {
         </Alert>
       </Snackbar>
 
-       {/* Snackbar */}
+      {/* Snackbar */}
       <Snackbar
         open={snackbar.open}
         autoHideDuration={4000}

@@ -9,11 +9,14 @@ import TopColleges from '../Components/TopColleges';
 import UPTopColleges from '../Components/UPTopColleges';
 import GetInTouch from '../Components/GetInTouch';
 import QuickForm from '../Components/QucikForm';
+import { useDispatch } from 'react-redux';
+import { fetchAllRegisters } from '../Redux/Features/RegisterSlice';
 
 function Home() {
   const [value, setValue] = useState("");
   const [showPopup, setShowPopup] = useState(false);
   let inactivityTimer;
+  const dispatch = useDispatch()
 
   const theme = useTheme(); // Detect current theme (light or dark)
 
@@ -26,6 +29,7 @@ function Home() {
   };
 
   useEffect(() => {
+    dispatch(fetchAllRegisters())
     // Set up event listeners for user activity
     window.addEventListener('mousemove', resetTimer);
     window.addEventListener('keypress', resetTimer);
@@ -39,7 +43,7 @@ function Home() {
       window.removeEventListener('mousemove', resetTimer);
       window.removeEventListener('keypress', resetTimer);
     };
-  }, []);
+  }, [dispatch  ]);
 
   const handleTextarea = () => {
     setValue("");
