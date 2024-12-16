@@ -10,6 +10,8 @@ import {
   FormControl,
   InputAdornment,
   useTheme,
+  Snackbar,
+  Alert,
 } from '@mui/material';
 import PersonIcon from '@mui/icons-material/Person';
 import EmailIcon from '@mui/icons-material/Email';
@@ -24,11 +26,14 @@ const QuickForm = () => {
     email: '',
     mobile: '',
     city: '',
-    course: 'BE/B.Tech - Bachelors (Technology)',
+    interestedCourse: '',
   });
 
+  const [snackbar, setSnackbar] = useState({ open: false, message: '', severity: '' });
+  const handleCloseSnackbar = () => {
+    setSnackbar({ ...snackbar, open: false });
+  };
   const theme = useTheme(); // Access the current theme (light or dark)
-
   const handleChange = (e) => {
     setFormData({
       ...formData,
@@ -36,36 +41,51 @@ const QuickForm = () => {
     });
   };
 
+  const handleSnackbarClose = () => {
+    setSnackbar({ open: false, message: '', severity: '' });
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault(); // Prevent the default form submission behavior
-    console.log("Form Data:", formData); 
-  
+    console.log('Form Data:', formData);
+
     try {
       // Send a POST request using Axios
       const response = await axios.post(`http://localhost:8080/register`, formData);
-      console.log("Response from server:", response);
-  
+      console.log('Response from server:', response);
+
       if (response) {
-        console.log("You are registered successfully");
-        alert("Registration successful!");
+        setSnackbar({
+          open: true,
+          message: 'Registration successful!',
+          severity: 'success',
+        });
         // Optionally, clear the form data
         setFormData({
-          fullName: "",
-          email: "",
-          mobile: "",
-          course: "",
-          city: "",
+          fullName: '',
+          email: '',
+          mobile: '',
+          interestedCourse: '',
+          city: '',
         });
       } else {
-        console.log("Unexpected response:", response);
+        console.log('Unexpected response:', response);
+        setSnackbar({
+          open: true,
+          message: 'Unexpected response from the server.',
+          severity: 'warning',
+        });
       }
     } catch (error) {
       // Log and display errors
-      console.error("Error occurred:", error);
-      alert("An error occurred. Please try again.");
+      console.error('Error occurred:', error);
+      setSnackbar({
+        open: true,
+        message: 'An error occurred. Please try again.',
+        severity: 'error',
+      });
     }
   };
-  
 
   return (
     <Box
@@ -170,8 +190,8 @@ const QuickForm = () => {
         <FormControl fullWidth sx={{ marginBottom: 3 }}>
           <InputLabel>Course Interested In</InputLabel>
           <Select
-            name="course"
-            value={formData.course}
+            name="interestedCourse"
+            value={formData.interestedCourse}
             onChange={handleChange}
             required
             label="Course Interested In"
@@ -204,6 +224,35 @@ const QuickForm = () => {
           SUBMIT
         </Button>
       </form>
+
+      {/* Snackbar for displaying feedback */}
+      <Snackbar
+        open={snackbar.open}
+        autoHideDuration={4000}
+        onClose={handleSnackbarClose}
+        anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
+      >
+        <Alert onClose={handleSnackbarClose} severity={snackbar.severity} sx={{ width: '100%' }}>
+          {snackbar.message}
+        </Alert>
+      </Snackbar>
+
+       {/* Snackbar */}
+      <Snackbar
+        open={snackbar.open}
+        autoHideDuration={4000}
+        onClose={handleCloseSnackbar}
+        anchorOrigin={{ vertical: 'top', horizontal: 'right' }} // Top-right position
+      >
+        <Alert
+          onClose={handleCloseSnackbar}
+          severity={snackbar.severity}
+          sx={{ width: '100%' }}
+        >
+          {snackbar.message}
+        </Alert>
+      </Snackbar>
+
     </Box>
   );
 };
