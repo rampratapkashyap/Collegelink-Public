@@ -8,6 +8,7 @@ import {
     Grid,
     InputAdornment,
 } from "@mui/material";
+import PersonIcon from '@mui/icons-material/Person';
 import EmailIcon from "@mui/icons-material/Email";
 import PhoneIcon from "@mui/icons-material/Phone";
 import SchoolIcon from "@mui/icons-material/School";
@@ -39,6 +40,24 @@ const GetInTouch = () => {
                     justifyContent="center"
                     sx={{ mt: 2 }}
                 >
+                    {/* Full Naame Field */}
+                    {/* Full Name Field */}
+                    <Grid item xs={12} sm={3}>
+                        <TextField
+                            fullWidth
+                            variant="outlined"
+                            label="Enter your full name"
+                            InputProps={{
+                                startAdornment: (
+                                    <InputAdornment position="start">
+                                        <PersonIcon />
+                                    </InputAdornment>
+                                ),
+                            }}
+                        />
+                    </Grid>
+
+
                     {/* Email Field */}
                     <Grid item xs={12} sm={3}>
                         <TextField
@@ -102,7 +121,7 @@ const GetInTouch = () => {
                             endIcon={<SendIcon />}
                             fullWidth
                             size="small"
-                            sx={{ height: "55px" }} 
+                            sx={{ height: "55px" }}
                         >
                             Send
                         </Button>
