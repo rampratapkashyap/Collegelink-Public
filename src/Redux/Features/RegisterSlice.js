@@ -1,13 +1,12 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import axios from 'axios';
-
+import AxiosInstance from '../../Auth/AxiosInstance';
 
 // Create agent
 export const registerAPI = createAsyncThunk(
     'registerAPI',
     async (formData, { rejectWithValue }) => {
         try {
-            const response = await axios.post('http://localhost:8080/register', formData, {
+            const response = await AxiosInstance.post('/register', formData, {
                 headers: {
                     'Content-Type': 'application/json', // Ensure JSON content type
                 },
@@ -24,7 +23,7 @@ export const fetchAllRegisters = createAsyncThunk(
     'fetchAllRegisters',
     async (_, { rejectWithValue }) => {
         try {
-            const response = await axios.get('http://localhost:8080/register');
+            const response = await AxiosInstance.get('/register');
             return response.data;
         } catch (error) {
             return rejectWithValue(error.response?.data || 'Error fetching users');
@@ -65,11 +64,11 @@ export const registerSlice = createSlice({
             })
             .addCase(registerAPI.fulfilled, (state, action) => {
                 state.loading = false;
-                state.status="Register sucessfully"
+                state.status = "Register sucessfully"
             })
             .addCase(registerAPI.rejected, (state, action) => {
                 state.loading = false;
-                state.status="Something went wrong"
+                state.status = "Something went wrong"
             })
 
 
