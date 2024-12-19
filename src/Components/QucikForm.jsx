@@ -18,7 +18,6 @@ import EmailIcon from '@mui/icons-material/Email';
 import PhoneIcon from '@mui/icons-material/Phone';
 import LocationCityIcon from '@mui/icons-material/LocationCity';
 import { School as MortarboardIcon } from '@mui/icons-material';
-import axios from 'axios';
 import { useDispatch } from 'react-redux';
 import { registerAPI } from '../Redux/Features/RegisterSlice';
 

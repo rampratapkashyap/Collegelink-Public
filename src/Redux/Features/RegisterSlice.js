@@ -6,7 +6,7 @@ export const registerAPI = createAsyncThunk(
     'registerAPI',
     async (formData, { rejectWithValue }) => {
         try {
-            const response = await AxiosInstance.post('/register', formData, {
+            const response = await AxiosInstance.post('/lead', formData, {
                 headers: {
                     'Content-Type': 'application/json', // Ensure JSON content type
                 },
@@ -23,7 +23,7 @@ export const fetchAllRegisters = createAsyncThunk(
     'fetchAllRegisters',
     async (_, { rejectWithValue }) => {
         try {
-            const response = await AxiosInstance.get('/register');
+            const response = await AxiosInstance.get('/lead');
             return response.data;
         } catch (error) {
             return rejectWithValue(error.response?.data || 'Error fetching users');
@@ -37,7 +37,6 @@ export const registerSlice = createSlice({
         status: '',
         loading: false,
         registers: [],
-
     },
     reducers: {
 
@@ -64,7 +63,7 @@ export const registerSlice = createSlice({
             })
             .addCase(registerAPI.fulfilled, (state, action) => {
                 state.loading = false;
-                state.status = "Register sucessfully"
+                state.status = "Register successfully"
             })
             .addCase(registerAPI.rejected, (state, action) => {
                 state.loading = false;
