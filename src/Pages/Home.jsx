@@ -25,7 +25,7 @@ function Home() {
     clearTimeout(inactivityTimer);
     inactivityTimer = setTimeout(() => {
       setShowPopup(true); // Show popup after 10 seconds of inactivity
-    }, 10000); // 10 seconds
+    }, 30000); // 30 seconds
   };
 
   useEffect(() => {
