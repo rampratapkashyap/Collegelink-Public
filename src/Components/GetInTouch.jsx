@@ -188,7 +188,6 @@ const GetInTouch = () => {
       </Box>
 
       {/* Snackbar */}
-      {/* Snackbar */}
       <Snackbar
         open={snackbar.open}
         autoHideDuration={4000}

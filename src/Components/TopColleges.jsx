@@ -9,7 +9,7 @@ import {
     Paper,
     Button,
     IconButton,
-    Avatar,
+    Avatar, Typography,
     Box,
 } from '@mui/material';
 import { ArrowBack, ArrowForward, Cancel } from '@mui/icons-material';
@@ -122,7 +122,9 @@ const TopColleges = () => {
 
     return (
         <div style={{ padding: '20px' }}>
-            <h1>Top Colleges</h1>
+            <Typography variant="h6" gutterBottom>
+                Top Colleges
+            </Typography>
 
             {/* Filter buttons with horizontal scrolling */}
             <div style={{ display: 'flex', alignItems: 'center', marginBottom: '20px' }}>
