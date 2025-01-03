@@ -3,12 +3,37 @@ import { Card, CardContent, Typography, IconButton, Grid, CardMedia, Box, useMed
 import { ArrowForward, ArrowBack } from '@mui/icons-material';
 
 const colleges = [
-  { name: 'College 1', description: 'Description for College 1' },
-  { name: 'College 2', description: 'Description for College 2' },
-  { name: 'College 3', description: 'Description for College 3' },
-  { name: 'College 4', description: 'Description for College 4' },
-  { name: 'College 5', description: 'Description for College 5' },
+  {
+    name: 'Maharishi University of Information Technology (MUIT)',
+    description: 'Known for its undergraduate and postgraduate programs in engineering and technology, established in 2014 and recognized by UGC.',
+  },
+  {
+    name: 'Shri Ram Murti Smarak College of Engineering and Technology (SRMSCET)',
+    description: 'Affiliated with Dr. A.P.J. Abdul Kalam Technical University, offering B.Tech programs in various engineering disciplines.',
+    imageUrl: 'https://example.com/srmscet.jpg'
+  },
+  {
+    name: 'Babu Banarasi Das University (BBDU)',
+    description: 'Offers a range of engineering courses with state-of-the-art infrastructure and experienced faculty.',
+    imageUrl: 'https://example.com/bbdu.jpg'
+  },
+  {
+    name: 'Amity University, Lucknow Campus',
+    description: 'Provides diverse engineering programs with a strong focus on research and innovation.',
+    imageUrl: 'https://example.com/amity-lucknow.jpg'
+  },
+  {
+    name: 'Integral University',
+    description: 'Offers holistic education with various engineering programs emphasizing practical learning.',
+    imageUrl: 'https://example.com/integral.jpg'
+  },
+  {
+    name: 'Azad Institute of Engineering and Technology',
+    description: 'Focuses on practical learning through undergraduate and postgraduate engineering programs.',
+    imageUrl: 'https://example.com/aiet.jpg'
+  }
 ];
+
 
 const ArrowButton = ({ onClick, direction, label }) => (
   <IconButton
@@ -83,7 +108,7 @@ function UPTopColleges() {
                 <CardMedia
                   component="img"
                   height="200"
-                  image="https://via.placeholder.com/350x200"
+                  image={college.imageUrl}
                   alt="College Image"
                 />
                 <CardContent>
