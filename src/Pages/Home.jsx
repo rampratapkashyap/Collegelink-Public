@@ -11,6 +11,7 @@ import GetInTouch from '../Components/GetInTouch';
 import QuickForm from '../Components/QucikForm';
 import { useDispatch } from 'react-redux';
 import { fetchAllRegisters } from '../Redux/Features/RegisterSlice';
+import StudyGoal from '../Components/StudyGoal';
 
 function Home() {
   const [value, setValue] = useState("");
@@ -43,7 +44,7 @@ function Home() {
       window.removeEventListener('mousemove', resetTimer);
       window.removeEventListener('keypress', resetTimer);
     };
-  }, [dispatch  ]);
+  }, [dispatch]);
 
   const handleTextarea = () => {
     setValue("");
@@ -140,6 +141,8 @@ function Home() {
           </Box>
         </Grid>
       </Grid>
+      {/* Study Goal */}
+      <StudyGoal />
 
       {/* Top Colleges */}
       <TopColleges />
