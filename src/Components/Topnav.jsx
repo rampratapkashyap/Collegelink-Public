@@ -32,7 +32,7 @@ const Topnav = () => {
           </Box>
           {/* Application Name */}
           <Typography variant="h6" sx={{ flexGrow: 1 }}>
-            CollegeNevigator
+            CollegeLink
           </Typography>
           {/* Navigation items for larger screens */}
           <Box display={{ xs: 'none', md: 'flex' }} gap={3}>
