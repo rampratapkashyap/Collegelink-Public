@@ -6,12 +6,13 @@ import Home from './Pages/Home';
 import Courses from './Pages/Courses';
 import About from './Pages/About';
 import Contact from './Pages/Contact';
+import Footer from './Components/Footer';
 
 const App = () => {
   return (
     <CustomThemeProvider> {/* Wrap the app with CustomThemeProvider */}
       <Topnav />
-      <div style={{ marginTop: '55px' }}>
+      <div style={{ marginTop: '65px' }}>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/courses" element={<Courses />} />
@@ -19,6 +20,8 @@ const App = () => {
           <Route path="/contact" element={<Contact />} />
         </Routes>
       </div>
+      {/* Footer */}
+      <Footer />
     </CustomThemeProvider>
   );
 };

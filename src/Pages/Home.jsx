@@ -4,7 +4,6 @@ import SearchIcon from '@mui/icons-material/Search';
 import CloseIcon from '@mui/icons-material/Close';
 import { Carousel } from 'react-responsive-carousel';
 import "react-responsive-carousel/lib/styles/carousel.min.css";
-import Footer from '../Components/Footer';
 import TopColleges from '../Components/TopColleges';
 import UPTopColleges from '../Components/UPTopColleges';
 import GetInTouch from '../Components/GetInTouch';
@@ -152,9 +151,6 @@ function Home() {
 
       {/* Get In Touch*/}
       <GetInTouch />
-
-      {/* Footer */}
-      <Footer />
 
       {/* Quick Form Popup */}
       {showPopup && (

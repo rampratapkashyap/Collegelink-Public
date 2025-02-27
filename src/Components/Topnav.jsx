@@ -55,8 +55,8 @@ const Topnav = () => {
               to="/"
               variant={activeItem === 'Home' ? 'contained' : 'text'}
               sx={{
-                backgroundColor: activeItem === 'Home' && theme === 'light' ? 'black' : 'transparent',
-                color: activeItem === 'Home' && theme === 'light' ? 'white' : 'inherit',
+                backgroundColor: activeItem === 'Home' ? (theme === 'light' ? 'black' : 'white') : 'transparent',
+                color: activeItem === 'Home' ? (theme === 'light' ? 'white' : 'black') : 'inherit',
               }}
               onClick={() => handleItemClick('Home')}
             >
@@ -67,8 +67,8 @@ const Topnav = () => {
               to="/courses"
               variant={activeItem === 'Courses' ? 'contained' : 'text'}
               sx={{
-                backgroundColor: activeItem === 'Courses' && theme === 'light' ? 'black' : 'transparent',
-                color: activeItem === 'Courses' && theme === 'light' ? 'white' : 'inherit',
+                backgroundColor: activeItem === 'Courses' ? (theme === 'light' ? 'black' : 'white') : 'transparent',
+                color: activeItem === 'Courses' ? (theme === 'light' ? 'white' : 'black') : 'inherit',
               }}
               onClick={() => handleItemClick('Courses')}
             >
@@ -79,8 +79,8 @@ const Topnav = () => {
               to="/about"
               variant={activeItem === 'About' ? 'contained' : 'text'}
               sx={{
-                backgroundColor: activeItem === 'About' && theme === 'light' ? 'black' : 'transparent',
-                color: activeItem === 'About' && theme === 'light' ? 'white' : 'inherit',
+                backgroundColor: activeItem === 'About' ? (theme === 'light' ? 'black' : 'white') : 'transparent',
+                color: activeItem === 'About' ? (theme === 'light' ? 'white' : 'black') : 'inherit',
               }}
               onClick={() => handleItemClick('About')}
             >
@@ -91,8 +91,8 @@ const Topnav = () => {
               to="/contact"
               variant={activeItem === 'Contact' ? 'contained' : 'text'}
               sx={{
-                backgroundColor: activeItem === 'Contact' && theme === 'light' ? 'black' : 'transparent',
-                color: activeItem === 'Contact' && theme === 'light' ? 'white' : 'inherit',
+                backgroundColor: activeItem === 'Contact' ? (theme === 'light' ? 'black' : 'white') : 'transparent',
+                color: activeItem === 'Contact' ? (theme === 'light' ? 'white' : 'black') : 'inherit',
               }}
               onClick={() => handleItemClick('Contact')}
             >
