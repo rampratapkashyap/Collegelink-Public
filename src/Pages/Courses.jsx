@@ -13,9 +13,10 @@ import {
   Modal,
   TextField,
 } from "@mui/material";
-import ArrowForwardIcon from "@mui/icons-material/ArrowForward"; // Import arrow icon
+import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 
 const coursesData = [
+  { category: "Commerce", name: "MBA", duration: "2 Years", eligibility: "Graduation", topColleges: ["IIM Ahmedabad", "IIM Bangalore"], description: "MBA is a master's degree in business administration." },
   { category: "Engineering", name: "B.Tech (CS)", duration: "4 Years", eligibility: "10+2 with PCM", topColleges: ["IIT Delhi", "IIT Bombay"], description: "B.Tech in CS focuses on software and AI." },
   { category: "Medical", name: "MBBS", duration: "5.5 Years", eligibility: "10+2 with PCB", topColleges: ["AIIMS", "CMC Vellore"], description: "MBBS is a professional medical degree." },
   { category: "Law", name: "LLB", duration: "3 Years", eligibility: "Graduation", topColleges: ["NLU Delhi", "Symbiosis Law"], description: "LLB is a law degree for legal careers." },
@@ -56,7 +57,6 @@ const Courses = () => {
         Explore Courses
       </Typography>
 
-      {/* Category Filter Dropdown */}
       <FormControl fullWidth sx={{ marginBottom: 3 }}>
         <InputLabel>Select Category</InputLabel>
         <Select value={selectedCategory} onChange={handleCategoryChange}>
@@ -68,7 +68,6 @@ const Courses = () => {
         </Select>
       </FormControl>
 
-      {/* Course Details Page */}
       {selectedCourse ? (
         <Box sx={{ padding: 3, border: "1px solid #ddd", borderRadius: 2 }}>
           <Typography variant="h5" color="primary">{selectedCourse.name}</Typography>
@@ -77,14 +76,13 @@ const Courses = () => {
           <Typography><strong>Top Colleges:</strong> {selectedCourse.topColleges.join(", ")}</Typography>
           <Typography><strong>Description:</strong> {selectedCourse.description}</Typography>
           <Button
-            sx={{ marginTop: 2, backgroundColor: "orange", color: "white", borderRadius: "8px" }}
+            sx={{ marginTop: 2, backgroundColor: "black", color: "white", borderRadius: "8px" }}
             onClick={(e) => handleApplyClick(e, selectedCourse)}
           >
             Apply Now <ArrowForwardIcon sx={{ marginLeft: 1 }} />
           </Button>
         </Box>
       ) : (
-        /* Courses Grid */
         <Grid container spacing={3}>
           {filteredCourses.map((course, index) => (
             <Grid item xs={12} sm={6} md={4} key={index}>
@@ -99,16 +97,15 @@ const Courses = () => {
                 }}
                 onClick={() => handleCourseClick(course)}
               >
-                {/* Apply Button - Top Right */}
                 <Button
                   sx={{
                     position: "absolute",
                     top: 10,
                     right: 10,
-                    backgroundColor: "orange",
+                    backgroundColor: "black",
                     color: "white",
                     borderRadius: "8px",
-                    "&:hover": { backgroundColor: "#ff9800" },
+                    "&:hover": { backgroundColor: "#333" },
                   }}
                   onClick={(e) => handleApplyClick(e, course)}
                 >
@@ -127,7 +124,6 @@ const Courses = () => {
         </Grid>
       )}
 
-      {/* Apply Modal */}
       <Modal open={applyModalOpen} onClose={handleCloseModal}>
         <Box
           sx={{

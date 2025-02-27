@@ -7,7 +7,8 @@ import {
   IconButton,
   List,
   ListItem,
-  ListItemIcon
+  ListItemIcon,
+  useTheme
 } from "@mui/material";
 import {
   ArrowBackIos,
@@ -35,6 +36,8 @@ const studyGoals = [
 
 const StudyGoal = () => {
   const scrollRef = useRef(null);
+  const theme = useTheme();
+  const isDarkMode = theme.palette.mode === "dark";
 
   const scroll = (direction) => {
     if (scrollRef.current) {
@@ -48,9 +51,19 @@ const StudyGoal = () => {
   };
 
   return (
-    <Box sx={{ display: "flex", alignItems: "center", p: 3, position: "relative" }}>
+    <Box
+      sx={{
+        display: "flex",
+        alignItems: "center",
+        p: 3,
+        position: "relative",
+        backgroundColor: isDarkMode ? "#121212" : "#ffffff",
+        transition: "background-color 0.3s ease-in-out",
+        borderRadius: "12px"
+      }}
+    >
       {/* Left Scroll Button */}
-      <IconButton onClick={() => scroll("left")} sx={{ zIndex: 2 }}>
+      <IconButton onClick={() => scroll("left")} sx={{ zIndex: 2, color: isDarkMode ? "#ffffff" : "#000000" }}>
         <ArrowBackIos />
       </IconButton>
 
@@ -76,13 +89,18 @@ const StudyGoal = () => {
               minWidth: 240,
               textAlign: "center",
               p: 2,
-              backgroundColor: goal.color,
+              backgroundColor: isDarkMode ? "#1e1e1e" : goal.color,
+              color: isDarkMode ? "#ffffff" : "#000000",
               borderRadius: "12px",
-              boxShadow: "0px 4px 12px rgba(0, 0, 0, 0.1)",
+              boxShadow: isDarkMode
+                ? "0px 4px 12px rgba(255, 255, 255, 0.1)"
+                : "0px 4px 12px rgba(0, 0, 0, 0.1)",
               transition: "0.3s",
               "&:hover": {
                 transform: "translateY(-5px)",
-                boxShadow: "0px 6px 15px rgba(0, 0, 0, 0.15)",
+                boxShadow: isDarkMode
+                  ? "0px 6px 15px rgba(255, 255, 255, 0.15)"
+                  : "0px 6px 15px rgba(0, 0, 0, 0.15)",
               },
             }}
           >
@@ -93,7 +111,7 @@ const StudyGoal = () => {
               </Typography>
               <List sx={{ textAlign: "left", pl: 2 }}>
                 {goal.courses.map((course, idx) => (
-                  <ListItem key={idx} sx={{ p: 0, fontSize: "0.9rem", color: "#555" }}>
+                  <ListItem key={idx} sx={{ p: 0, fontSize: "0.9rem", color: isDarkMode ? "#ddd" : "#555" }}>
                     • {course}
                   </ListItem>
                 ))}
@@ -104,7 +122,7 @@ const StudyGoal = () => {
       </Box>
 
       {/* Right Scroll Button */}
-      <IconButton onClick={() => scroll("right")} sx={{ zIndex: 2 }}>
+      <IconButton onClick={() => scroll("right")} sx={{ zIndex: 2, color: isDarkMode ? "#ffffff" : "#000000" }}>
         <ArrowForwardIos />
       </IconButton>
     </Box>
