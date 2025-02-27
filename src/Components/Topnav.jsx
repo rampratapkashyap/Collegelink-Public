@@ -3,6 +3,7 @@ import { AppBar, Toolbar, Typography, IconButton, Button, Box, Drawer, List, Lis
 import MenuIcon from '@mui/icons-material/Menu'; // Hamburger menu icon
 import Brightness2Icon from '@mui/icons-material/Brightness2'; // Moon icon
 import WbSunnyIcon from '@mui/icons-material/WbSunny'; // Sun icon
+import SchoolIcon from '@mui/icons-material/School'; // Graduation cap icon
 import { useTheme } from './ThemeContext';
 import { Link } from 'react-router-dom';
 
@@ -19,28 +20,44 @@ const Topnav = () => {
 
   return (
     <>
-      <AppBar position="fixed">
+      <AppBar
+        position="fixed"
+        sx={{
+          backgroundColor: theme === 'light' ? 'white' : 'inherit',
+          color: theme === 'light' ? 'black' : 'inherit',
+        }}
+      >
         <Toolbar>
           {/* Menu icon for mobile screens */}
           <Box display={{ xs: 'flex', md: 'none' }} marginRight={1}>
-            <IconButton
-              color="inherit"
-              onClick={() => setDrawerOpen(true)}
-            >
+            <IconButton color="inherit" onClick={() => setDrawerOpen(true)}>
               <MenuIcon />
             </IconButton>
           </Box>
-          {/* Application Name */}
-          <Typography variant="h6" sx={{ flexGrow: 1 }}>
-            CollegeLink.in
+
+          {/* Application Name with Styling */}
+          <Typography variant="h6" sx={{ flexGrow: 1, display: 'flex', alignItems: 'center' }}>
+            <SchoolIcon
+              sx={{
+                marginRight: 1,
+                fontSize: 40,
+                color: theme === 'light' ? 'black' : 'white',
+              }}
+            />
+            <span style={{ color: '#FFD700' }}>College</span>
+            <span style={{ color: '#1E90FF' }}>Link</span>.in
           </Typography>
+
           {/* Navigation items for larger screens */}
           <Box display={{ xs: 'none', md: 'flex' }} gap={3}>
             <Button
               component={Link}
               to="/"
               variant={activeItem === 'Home' ? 'contained' : 'text'}
-              color="inherit"
+              sx={{
+                backgroundColor: activeItem === 'Home' && theme === 'light' ? 'black' : 'transparent',
+                color: activeItem === 'Home' && theme === 'light' ? 'white' : 'inherit',
+              }}
               onClick={() => handleItemClick('Home')}
             >
               Home
@@ -49,7 +66,10 @@ const Topnav = () => {
               component={Link}
               to="/courses"
               variant={activeItem === 'Courses' ? 'contained' : 'text'}
-              color="inherit"
+              sx={{
+                backgroundColor: activeItem === 'Courses' && theme === 'light' ? 'black' : 'transparent',
+                color: activeItem === 'Courses' && theme === 'light' ? 'white' : 'inherit',
+              }}
               onClick={() => handleItemClick('Courses')}
             >
               Courses
@@ -58,7 +78,10 @@ const Topnav = () => {
               component={Link}
               to="/about"
               variant={activeItem === 'About' ? 'contained' : 'text'}
-              color="inherit"
+              sx={{
+                backgroundColor: activeItem === 'About' && theme === 'light' ? 'black' : 'transparent',
+                color: activeItem === 'About' && theme === 'light' ? 'white' : 'inherit',
+              }}
               onClick={() => handleItemClick('About')}
             >
               About
@@ -67,7 +90,10 @@ const Topnav = () => {
               component={Link}
               to="/contact"
               variant={activeItem === 'Contact' ? 'contained' : 'text'}
-              color="inherit"
+              sx={{
+                backgroundColor: activeItem === 'Contact' && theme === 'light' ? 'black' : 'transparent',
+                color: activeItem === 'Contact' && theme === 'light' ? 'white' : 'inherit',
+              }}
               onClick={() => handleItemClick('Contact')}
             >
               Contact

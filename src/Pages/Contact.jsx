@@ -7,27 +7,66 @@ import {
   Grid,
   Paper,
   Box,
+  useTheme,
 } from "@mui/material";
 
 function Contact() {
+  const theme = useTheme(); // Access theme for dark/light mode
+
   return (
-    <Container maxWidth="sm" style={{ padding: '20px' }}>
-      <Paper elevation={3} style={{ padding: "30px" }}>
-        <Typography variant="h4" component="h1" gutterBottom>
+    <Container maxWidth="md" sx={{ mt: 10, mb: 5 }}> 
+      <Paper
+        elevation={6}
+        sx={{
+          padding: "40px",
+          borderRadius: "12px",
+          backgroundColor: theme.palette.mode === "dark" ? "#1c1c1c" : "#f9f9f9",
+          color: theme.palette.mode === "dark" ? "#ffffff" : "#333",
+          transition: "0.3s ease-in-out",
+        }}
+      >
+        <Typography
+          variant="h4"
+          component="h1"
+          gutterBottom
+          textAlign="center"
+          sx={{ fontWeight: "bold", color: theme.palette.primary.main }}
+        >
           Contact Us
         </Typography>
-        <Typography variant="body1" gutterBottom>
-          Have questions or want to get in touch? Fill out the form below, and
-          we'll get back to you as soon as possible.
+        <Typography variant="body1" textAlign="center" color="textSecondary">
+          We'd love to hear from you! Fill out the form below and our team will
+          respond as soon as possible.
         </Typography>
-        <Box component="form" noValidate autoComplete="off" style={{ marginTop: "20px" }}>
-          <Grid container spacing={2}>
-            <Grid item xs={12}>
+
+        <Box component="form" noValidate autoComplete="off" sx={{ mt: 3 }}>
+          <Grid container spacing={3}>
+            <Grid item xs={12} sm={6}>
               <TextField
                 fullWidth
-                label="Name"
+                label="First Name"
                 variant="outlined"
                 required
+                sx={{
+                  "& .MuiInputBase-root": {
+                    backgroundColor:
+                      theme.palette.mode === "dark" ? "#2b2b2b" : "#ffffff",
+                  },
+                }}
+              />
+            </Grid>
+            <Grid item xs={12} sm={6}>
+              <TextField
+                fullWidth
+                label="Last Name"
+                variant="outlined"
+                required
+                sx={{
+                  "& .MuiInputBase-root": {
+                    backgroundColor:
+                      theme.palette.mode === "dark" ? "#2b2b2b" : "#ffffff",
+                  },
+                }}
               />
             </Grid>
             <Grid item xs={12}>
@@ -37,6 +76,26 @@ function Contact() {
                 variant="outlined"
                 type="email"
                 required
+                sx={{
+                  "& .MuiInputBase-root": {
+                    backgroundColor:
+                      theme.palette.mode === "dark" ? "#2b2b2b" : "#ffffff",
+                  },
+                }}
+              />
+            </Grid>
+            <Grid item xs={12}>
+              <TextField
+                fullWidth
+                label="Subject"
+                variant="outlined"
+                required
+                sx={{
+                  "& .MuiInputBase-root": {
+                    backgroundColor:
+                      theme.palette.mode === "dark" ? "#2b2b2b" : "#ffffff",
+                  },
+                }}
               />
             </Grid>
             <Grid item xs={12}>
@@ -47,17 +106,37 @@ function Contact() {
                 multiline
                 rows={4}
                 required
+                sx={{
+                  "& .MuiInputBase-root": {
+                    backgroundColor:
+                      theme.palette.mode === "dark" ? "#2b2b2b" : "#ffffff",
+                  },
+                }}
               />
             </Grid>
           </Grid>
+
           <Button
             type="submit"
             variant="contained"
-            color="primary"
-            style={{ marginTop: "20px" }}
             fullWidth
+            sx={{
+              mt: 3,
+              padding: "12px",
+              fontSize: "16px",
+              backgroundColor: theme.palette.mode === "dark" ? "#1976d2" : "#1565c0",
+              color: "#fff",
+              "&:hover": {
+                backgroundColor: theme.palette.mode === "dark" ? "#1565c0" : "#0d47a1",
+              },
+              transition: "0.3s",
+              boxShadow:
+                theme.palette.mode === "dark"
+                  ? "0px 4px 10px rgba(25, 118, 210, 0.5)"
+                  : "0px 4px 10px rgba(21, 101, 192, 0.2)",
+            }}
           >
-            Submit
+            Send Message
           </Button>
         </Box>
       </Paper>

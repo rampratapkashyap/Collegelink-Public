@@ -1,53 +1,59 @@
 import React from "react";
-import { Container, Typography, Grid, Paper } from "@mui/material";
+import { Container, Typography, Grid, Paper, Box } from "@mui/material";
+import BusinessIcon from "@mui/icons-material/Business";
+import VisibilityIcon from "@mui/icons-material/Visibility";
+import PeopleIcon from "@mui/icons-material/People";
+import SchoolIcon from "@mui/icons-material/School"; // Degree Cap Icon 🎓
 
 function About() {
   return (
-    <Container style={{ padding: '20px' }}>
-      <Paper elevation={3} style={{ padding: "20px" }}>
-        <Typography variant="h3" component="h1" gutterBottom>
-          About Us
+    <Container maxWidth="lg" sx={{ paddingY: 5 }}>
+      {/* Main About Section */}
+      <Paper elevation={3} sx={{ padding: 4, borderRadius: 2, textAlign: "center" }}>
+        <Typography variant="h3" fontWeight="bold" gutterBottom display="flex" alignItems="center" justifyContent="center">
+          <SchoolIcon sx={{ fontSize: 50, color: "black", marginRight: 1 }} />
+          <span style={{ color: "orange" }}>College</span>
+          <span style={{ color: "blue" }}>Link.in</span>
         </Typography>
-        <Typography variant="body1" gutterBottom>
-          Welcome to [Your Company Name]! We are dedicated to providing top-notch
-          services and solutions tailored to meet your needs. With a focus on
-          innovation and excellence, our team strives to exceed your expectations.
+
+        <Typography variant="body1" color="textSecondary" paragraph>
+          CollegeLink.in is your gateway to top educational institutions, courses, and career opportunities.
+          We strive to connect students with the best colleges, empowering them to make informed decisions about their future.
         </Typography>
-        <Typography variant="body1" gutterBottom>
-          Our mission is to empower businesses and individuals with the tools and
-          support they need to succeed. Explore our offerings and discover how we
-          can help you achieve your goals.
+        <Typography variant="body1" color="textSecondary" paragraph>
+          Our mission is to simplify the college selection process by providing reliable and up-to-date information, ensuring
+          students find the right course and institution tailored to their goals.
         </Typography>
-        <Grid container spacing={4} style={{ marginTop: "20px" }}>
-          <Grid item xs={12} sm={4}>
-            <Typography variant="h6" component="h2">
-              Our Vision
-            </Typography>
-            <Typography variant="body2">
-              To be a global leader in delivering innovative solutions that drive
-              progress and success.
-            </Typography>
-          </Grid>
-          <Grid item xs={12} sm={4}>
-            <Typography variant="h6" component="h2">
-              Our Values
-            </Typography>
-            <Typography variant="body2">
-              Integrity, innovation, and customer-centricity are the pillars of our
-              organization.
-            </Typography>
-          </Grid>
-          <Grid item xs={12} sm={4}>
-            <Typography variant="h6" component="h2">
-              Our Team
-            </Typography>
-            <Typography variant="body2">
-              A diverse group of talented professionals dedicated to achieving
-              excellence.
-            </Typography>
-          </Grid>
-        </Grid>
+
+        {/* Image Section */}
+        <Box
+          component="img"
+          src="https://source.unsplash.com/800x400/?university,college"
+          alt="College Campus"
+          sx={{ width: "100%", height: 300, objectFit: "cover", borderRadius: 2, marginY: 3 }}
+        />
       </Paper>
+
+      {/* Grid Sections for Vision, Values, and Team */}
+      <Grid container spacing={4} sx={{ marginTop: 4 }}>
+        {[
+          { icon: <VisibilityIcon />, title: "Our Vision", text: "To revolutionize the education sector by bridging the gap between students and top-tier colleges." },
+          { icon: <BusinessIcon />, title: "Our Values", text: "Integrity, transparency, and student success drive everything we do at CollegeLink.in." },
+          { icon: <PeopleIcon />, title: "Our Team", text: "A passionate team of educators, technologists, and counselors committed to shaping brighter futures." }
+        ].map((item, index) => (
+          <Grid item xs={12} sm={4} key={index}>
+            <Paper elevation={3} sx={{ padding: 3, textAlign: "center", borderRadius: 2, minHeight: 200 }}>
+              {React.cloneElement(item.icon, { sx: { fontSize: 50, color: index === 0 ? "primary.main" : index === 1 ? "secondary.main" : "success.main" } })}
+              <Typography variant="h5" fontWeight="bold" sx={{ marginTop: 1 }}>
+                {item.title}
+              </Typography>
+              <Typography variant="body2" color="textSecondary">
+                {item.text}
+              </Typography>
+            </Paper>
+          </Grid>
+        ))}
+      </Grid>
     </Container>
   );
 }
